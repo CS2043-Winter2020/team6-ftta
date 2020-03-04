@@ -46,9 +46,7 @@ public class FileWriter {
                 }
             }
              
-        }
-         
-         
+        }        
         try (FileOutputStream outputStream = new FileOutputStream("TestFiles/TransactionReport.xlsx")) {
             workbook.write(outputStream);
         }
