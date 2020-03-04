@@ -6,10 +6,10 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="commons-collections4-4.1.jar"/>
-	<classpathentry kind="lib" path="poi-3.17.jar"/>
-	<classpathentry kind="lib" path="poi-ooxml-3.17.jar"/>
-	<classpathentry kind="lib" path="poi-ooxml-schemas-3.17.jar"/>
-	<classpathentry kind="lib" path="xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="build/Jars/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="build/Jars/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="build/Jars/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="lib" path="build/Jars/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="lib" path="build/Jars/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
