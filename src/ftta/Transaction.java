@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Transaction {
     private double transactionID;
-    private Date date;
+    private String date;
     private String description;
-    private float debit;
-    private float credit;
+    private double debit;
+    private double credit;
 
-    public Transaction(Date date, String description, float debit, float credit) { // constructed using data from the
+    public Transaction(String date, String description, double debit, double credit) { // constructed using data from the
                                                                                    // bank record.
         this.date = date;
         this.description = description;
@@ -21,7 +21,7 @@ public class Transaction {
         this.transactionID = transactionID;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -41,7 +41,7 @@ public class Transaction {
         return transactionID;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -49,11 +49,11 @@ public class Transaction {
         return description;
     }
 
-    public float getDebit() {
+    public double getDebit() {
         return debit;
     }
 
-    public float getCredit() {
+    public double getCredit() {
         return credit;
     }
 }
