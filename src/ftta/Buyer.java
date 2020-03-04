@@ -9,10 +9,6 @@ public class Buyer{
 		this.buyerID = id;
 		this.initials = initialsIn;
 	}
-	
-	public String getInitials(){
-		return initials;
-	}
 
 	public long getID(){
 		return buyerID;
@@ -24,5 +20,9 @@ public class Buyer{
 
 	public void setInitials(String initialsIn){
 		initials = initialsIn;
+	}
+    
+	public String getInitials() {
+		return initials;
 	}
 }
