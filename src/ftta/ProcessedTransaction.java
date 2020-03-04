@@ -18,11 +18,11 @@ public class ProcessedTransaction extends Transaction{
 		return buyer;
 	}
 	
-	public void setCategory(String tagIn) {
+	public void setTag(String tagIn) {
 		tag = tagIn;
 	}
 	
-	public String getCategory() {
+	public String getTag() {
 		return tag;
 	}
 	
