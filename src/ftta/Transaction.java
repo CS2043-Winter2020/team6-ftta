@@ -1,7 +1,5 @@
 package ftta;
 
-import java.util.Date;
-
 public class Transaction {
     private double transactionID;
     private String date;
@@ -9,12 +7,12 @@ public class Transaction {
     private double debit;
     private double credit;
 
-    public Transaction(String date, String description, double debit, double credit) { // constructed using data from the
+    public Transaction(String date, String description, double d, double e) { // constructed using data from the
                                                                                    // bank record.
         this.date = date;
         this.description = description;
-        this.debit = debit;
-        this.credit = credit;
+        this.debit = d;
+        this.credit = e;
     }
 
     public void setTransactionID(double transactionID) {
@@ -49,11 +47,11 @@ public class Transaction {
         return description;
     }
 
-    public double getDebit() {
+    public Double getDebit() {
         return debit;
     }
 
-    public double getCredit() {
+    public Double getCredit() {
         return credit;
     }
 }
