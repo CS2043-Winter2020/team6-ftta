@@ -16,16 +16,9 @@ public class Category {
 	}
 
 	public void removeTag(String tagIn) {
-		boolean found = false;
-		int index = 0;
-		for(int i=0; i<tags.size() && !found; i++) {
-			if(tags.get(i).equals(tagIn)) {
-				found = true;
-				index = i;
-			}
+		if(tags.contains(tagIn)) {
+			tags.remove(tagIn);
 		}
-		if(found)
-			tags.remove(index);
 	}
 	
 	public String getName() {
