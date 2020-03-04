@@ -16,8 +16,8 @@ public class TransactionScanner {
 		tList = tListIn;
 	}
 	
-	public void ScanExcelSheet(TransactionList tList) throws IOException {
-		FileInputStream fis = new FileInputStream(new File("/team6-ftta/TestFiles/SampleBankRecord.xls"));
+	public TransactionList ScanExcelSheet(TransactionList tList) throws IOException {
+		FileInputStream fis = new FileInputStream(new File("/Users/owenpiercey/git/team6-ftta/TestFiles/SampleBankRecord.xls"));
 		HSSFWorkbook wb = new HSSFWorkbook(fis);
 		HSSFSheet sheet = wb.getSheetAt(0);
 				
@@ -36,6 +36,8 @@ public class TransactionScanner {
 				tList.addToTransactions(transaction);
 			}
 		}
+		
+		return tList;
 	}
 	
 //	public void ProcessedTransactionScanner() throws IOException {

@@ -1,13 +1,14 @@
 package ftta;
 
-public class ProcessedTransaction extends Transaction{
+public class ProcessedTransaction {
 	private String buyer;
 	private String tag;
+	private Transaction transaction;
 	
-	public ProcessedTransaction(String date, String description, double d, double e, String buyerIn, String tagIn) {
-		super(date, description, d, e);
+	public ProcessedTransaction(Transaction transactionIn, String buyerIn, String tagIn) {
 		buyer = buyerIn;
 		tag = tagIn;
+		transaction = transactionIn;
 	}
 	
 	public void setBuyer(String buyerIn) {

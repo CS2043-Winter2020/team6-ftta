@@ -8,7 +8,8 @@ public class Buyer{
 	public Buyer(long id, String initialsIn){
 		this.buyerID = id;
 		this.initials = initialsIn;
-
+	}
+	
 	public String getInitials(){
 		return initials;
 	}
@@ -17,14 +18,11 @@ public class Buyer{
 		return buyerID;
 	}
     
-  public void setID(long id){
+	public void setID(long id){
 		buyerID = id;
 	}
 
 	public void setInitials(String initialsIn){
 		initials = initialsIn;
-    
-	public String getInitials() {
-		return initials;
 	}
 }
