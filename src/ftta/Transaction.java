@@ -7,12 +7,12 @@ public class Transaction {
     private double debit;
     private double credit;
 
-    public Transaction(String date, String description, double d, double e) { // constructed using data from the
+    public Transaction(String date, String description, double debit, double credit) { // constructed using data from the
                                                                                    // bank record.
         this.date = date;
         this.description = description;
-        this.debit = d;
-        this.credit = e;
+        this.debit = debit;
+        this.credit = credit;
     }
 
     public void setTransactionID(double transactionID) {
