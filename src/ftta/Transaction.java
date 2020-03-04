@@ -1,7 +1,5 @@
 package ftta;
 
-import java.util.Date;
-
 public class Transaction {
     private double transactionID;
     private String date;
@@ -29,11 +27,11 @@ public class Transaction {
         this.description = description;
     }
 
-    public void setDebit(float debit) {
+    public void setDebit(double debit) {
         this.debit = debit;
     }
 
-    public void setCredit(float credit) {
+    public void setCredit(double credit) {
         this.credit = credit;
     }
 
