@@ -27,11 +27,11 @@ public class Transaction {
         this.description = description;
     }
 
-    public void setDebit(float debit) {
+    public void setDebit(double debit) {
         this.debit = debit;
     }
 
-    public void setCredit(float credit) {
+    public void setCredit(double credit) {
         this.credit = credit;
     }
 
@@ -47,11 +47,11 @@ public class Transaction {
         return description;
     }
 
-    public Double getDebit() {
+    public double getDebit() {
         return debit;
     }
 
-    public Double getCredit() {
+    public double getCredit() {
         return credit;
     }
 }
