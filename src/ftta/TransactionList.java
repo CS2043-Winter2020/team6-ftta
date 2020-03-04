@@ -8,4 +8,8 @@ public class TransactionList {
     public void addToTransactions(Transaction transaction) {
         transactions.add(transaction);
     }
+    
+    public ArrayList<Transaction> getTransactions(){
+    	return transactions;
+    }
 }

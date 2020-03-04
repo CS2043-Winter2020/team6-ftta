@@ -32,7 +32,7 @@ public class Category {
 		return name;
 	}
 	
-	public ArrayList<String> getTags(){
+	public ArrayList<String> getTagsList(){
 		return tags;
 	}
 }

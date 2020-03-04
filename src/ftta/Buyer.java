@@ -14,7 +14,7 @@ public class Buyer{
 		return buyerID;
 	}
     
-  public void setID(long id){
+	public void setID(long id){
 		buyerID = id;
 	}
 
