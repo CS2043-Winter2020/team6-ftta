@@ -14,5 +14,25 @@ public class Category {
 	public void addTag(String tagIn) {
 		tags.add(tagIn);
 	}
-	//add removeTag method
+
+	public void removeTag(String tagIn) {
+		boolean found = false;
+		int index = 0;
+		for(int i=0; i<tags.size() && !found; i++) {
+			if(tags.get(i).equals(tagIn)) {
+				found = true;
+				index = i;
+			}
+		}
+		if(found)
+			tags.remove(index);
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public ArrayList<String> getTags(){
+		return tags;
+	}
 }
