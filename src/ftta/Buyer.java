@@ -4,37 +4,27 @@ public class Buyer{
 	
 	private long buyerID;
 	private String initials;
-	private String firstName;
-	private String lastName;
 
-	public Buyer(long id, String initials, String firstName, String lastName){
+	public Buyer(long id, String initialsIn){
 		this.buyerID = id;
-		this.initials = initials;
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
+		this.initials = initialsIn;
 
-	public String getName(){
-		return firstName + " " + lastName;
+	public String getInitials(){
+		return initials;
 	}
 
 	public long getID(){
 		return buyerID;
 	}
+    
+  public void setID(long id){
+		buyerID = id;
+	}
 
+	public void setInitials(String initialsIn){
+		initials = initialsIn;
+    
 	public String getInitials() {
 		return initials;
-	}
-	
-	public void setInitials(String initials) {
-		this.initials = initials;
-	}
-	public void setName(String firstName, String lastName){
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
-
-	public void setID(long id){
-		buyerID = id;
 	}
 }
