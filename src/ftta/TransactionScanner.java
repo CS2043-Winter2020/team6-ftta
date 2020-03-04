@@ -25,14 +25,14 @@ public class TransactionScanner {
 			for (Cell cell : row) // iteration over cell using for each loop
 			{
 				switch (formulaEvaluator.evaluateInCell(cell).getCellType()) {
-				case Cell.CELL_TYPE_NUMERIC: // field that represents numeric cell type
-					// getting the value of the cell as a number
-					System.out.print(cell.getNumericCellValue() + "\t\t");
-					break;
-				case Cell.CELL_TYPE_STRING: // field that represents string cell type
-					// getting the value of the cell as a string
-					System.out.print(cell.getStringCellValue() + "\t\t");
-					break;
+					case Cell.CELL_TYPE_NUMERIC: // field that represents numeric cell type
+						// getting the value of the cell as a number
+						System.out.print(cell.getNumericCellValue() + "\t\t");
+						break;
+					case Cell.CELL_TYPE_STRING: // field that represents string cell type
+						// getting the value of the cell as a string
+						System.out.print(cell.getStringCellValue() + "\t\t");
+						break;
 				}
 			}
 			System.out.println();
