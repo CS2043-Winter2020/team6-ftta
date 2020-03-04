@@ -10,22 +10,29 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
 public class TransactionScanner {
+	private TransactionList tList;
 	
-	public void ScanExcelSheet() throws IOException {
+	public TransactionScanner(TransactionList tListIn) {
+		tList = tListIn;
+	}
+	
+	public void ScanExcelSheet(TransactionList tList) throws IOException {
 		FileInputStream fis = new FileInputStream(new File("/team6-ftta/TestFiles/SampleBankRecord.xls"));
 		HSSFWorkbook wb = new HSSFWorkbook(fis);
 		HSSFSheet sheet = wb.getSheetAt(0);
-		
-		TransactionList tList = new TransactionList();
-		
+				
 		for (int i = 1; i < sheet.getLastRowNum()+1; i++) {
 			Row row = sheet.getRow(i);
 			
 			if (row.getCell(3) == null || row.getCell(3).getCellType() == Cell.CELL_TYPE_BLANK) {
-				Transaction transaction = new Transaction(row.getCell(0).getStringCellValue(), row.getCell(1).getStringCellValue(), row.getCell(2).getNumericCellValue() , 0);
+				Transaction transaction = new Transaction(row.getCell(0).getStringCellValue(), row.getCell(1).getStringCellValue(),
+						row.getCell(2).getNumericCellValue() , 0);
+				
 				tList.addToTransactions(transaction);
 			}else if(row.getCell(2) == null || row.getCell(2).getCellType() == Cell.CELL_TYPE_BLANK) {
-				Transaction transaction = new Transaction(row.getCell(0).getStringCellValue(), row.getCell(1).getStringCellValue(), 0, row.getCell(3).getNumericCellValue());
+				Transaction transaction = new Transaction(row.getCell(0).getStringCellValue(), row.getCell(1).getStringCellValue(),
+						0, row.getCell(3).getNumericCellValue());
+				
 				tList.addToTransactions(transaction);
 			}
 		}
