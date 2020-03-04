@@ -3,11 +3,13 @@ package ftta;
 public class Buyer{
 	
 	private long buyerID;
+	private String initials;
 	private String firstName;
 	private String lastName;
 
-	public Buyer(long id, String firstName, String lastName){
+	public Buyer(long id, String initials, String firstName, String lastName){
 		this.buyerID = id;
+		this.initials = initials;
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
@@ -20,6 +22,13 @@ public class Buyer{
 		return buyerID;
 	}
 
+	public String getInitials() {
+		return initials;
+	}
+	
+	public void setInitials(String initials) {
+		this.initials = initials;
+	}
 	public void setName(String firstName, String lastName){
 		this.firstName = firstName;
 		this.lastName = lastName;
