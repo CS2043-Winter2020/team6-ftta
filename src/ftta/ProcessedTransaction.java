@@ -27,4 +27,8 @@ public class ProcessedTransaction {
 		return tag;
 	}
 	
+	public Transaction getTransaction() {
+		return transaction;
+	}
+	
 }

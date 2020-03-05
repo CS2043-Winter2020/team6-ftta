@@ -17,7 +17,7 @@ public class TransactionScanner {
 	}
 	
 	public TransactionList ScanExcelSheet(TransactionList tList) throws IOException {
-		FileInputStream fis = new FileInputStream(new File("/Users/owenpiercey/git/team6-ftta/TestFiles/SampleBankRecord.xls"));
+		FileInputStream fis = new FileInputStream(new File("C:/Users/Joao Pontes/OneDrive/Desktop/Programing/School/CS2043/FinancialTracker/team6-ftta/TestFiles/SampleBankRecord.xls"));
 		HSSFWorkbook wb = new HSSFWorkbook(fis);
 		HSSFSheet sheet = wb.getSheetAt(0);
 				
@@ -39,25 +39,4 @@ public class TransactionScanner {
 		
 		return tList;
 	}
-	
-//	public void ProcessedTransactionScanner() throws IOException {
-//		FileInputStream fis = new FileInputStream(new File("/team6-ftta/TestFiles/SampleBankRecord2.xls"));
-//		HSSFWorkbook wb = new HSSFWorkbook(fis);
-//		HSSFSheet sheet = wb.getSheetAt(0);
-//		
-//		TransactionList tList = new TransactionList();
-//		
-//		for (int i = 1; i < sheet.getLastRowNum()+1; i++) {
-//			Row row = sheet.getRow(i);
-//			
-//			if (row.getCell(3) == null || row.getCell(3).getCellType() == Cell.CELL_TYPE_BLANK) {
-//				ProcessedTransaction pTransaction = new ProcessedTransaction(row.getCell(0).getStringCellValue(), row.getCell(1).getStringCellValue(), row.getCell(2).getNumericCellValue() , 0, row.getCell(4).getStringCellValue(), row.getCell(5).getStringCellValue());
-//				tList.addToTransactions(pTransaction);
-//			}else if(row.getCell(2) == null || row.getCell(2).getCellType() == Cell.CELL_TYPE_BLANK) {
-//				ProcessedTransaction pTransaction = new ProcessedTransaction(row.getCell(0).getStringCellValue(), row.getCell(1).getStringCellValue(), 0, row.getCell(3).getNumericCellValue(), row.getCell(4).getStringCellValue(), row.getCell(5).getStringCellValue());
-//				tList.addToTransactions(pTransaction);
-//			}
-//		} 
-//	}
-	
 }
