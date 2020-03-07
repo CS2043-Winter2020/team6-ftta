@@ -64,14 +64,17 @@ public class Driver {
 		bList.addBuyerToList(buyer4);
 		
 		ProcessedTransaction pt1 = new ProcessedTransaction(tList.getTransactions().get(0), buyer3.getInitials(), "Prescriptions");
-		ProcessedTransaction pt2 = new ProcessedTransaction(tList.getTransactions().get(2), buyer3.getInitials(), "sobeys");
-		ProcessedTransaction pt3 = new ProcessedTransaction(tList.getTransactions().get(3), buyer3.getInitials(), "food");
-		ProcessedTransaction pt4 = new ProcessedTransaction(tList.getTransactions().get(4), buyer3.getInitials(), "Gas");
+		ProcessedTransaction pt2 = new ProcessedTransaction(tList.getTransactions().get(2), buyer2.getInitials(), "sobeys");
+		ProcessedTransaction pt3 = new ProcessedTransaction(tList.getTransactions().get(3), buyer1.getInitials(), "food");
+		ProcessedTransaction pt4 = new ProcessedTransaction(tList.getTransactions().get(4), buyer4.getInitials(), "Gas");
 
 		ptList.addProccessedTransaction(pt1);
 		ptList.addProccessedTransaction(pt2);
 		ptList.addProccessedTransaction(pt3);
 		ptList.addProccessedTransaction(pt4);
+		
+		FileWriter f1 = new FileWriter(ptList);
+		f1.writeToFile();
 		
 		tReport.calculateCategoryListTotals();
 		System.out.println("Done");
