@@ -17,7 +17,7 @@ public class TransactionScanner {
 	}
 	
 	public TransactionList ScanExcelSheet(TransactionList tList) throws IOException {
-		FileInputStream fis = new FileInputStream(new File("C:/Users/Joao Pontes/OneDrive/Desktop/Programing/School/CS2043/FinancialTracker/team6-ftta/TestFiles/SampleBankRecord.xls"));
+		FileInputStream fis = new FileInputStream(new File("TestFiles/SampleBankRecord.xls"));
 		HSSFWorkbook wb = new HSSFWorkbook(fis);
 		HSSFSheet sheet = wb.getSheetAt(0);
 				

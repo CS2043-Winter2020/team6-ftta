@@ -20,4 +20,8 @@ public class ProcessedTransactionList {
 	public int size() {
 		return processedTransactions.size();
 	}
+	
+	public ArrayList<ProcessedTransaction> getList(){
+		return processedTransactions;
+	}
 }
