@@ -7,11 +7,10 @@ public class Driver {
 		TransactionList tList = new TransactionList();
 		CategoryList cList = new CategoryList();
 		TransactionReport ptList = new TransactionReport();
-		
 		System.out.println("Processing Bank Record");
 		TransactionScanner tScanner = new TransactionScanner(tList);
 		try {
-			tList = tScanner.ScanExcelSheet(tList);
+			tList = tScanner.ScanExcelSheet(tList, "/Users/owenpiercey/git/team6-ftta/TestFiles/SampleBankRecord.xls");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

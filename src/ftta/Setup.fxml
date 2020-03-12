@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ftta.Main">
+   <children>
+      <Label layoutX="36.0" layoutY="39.0" text="Add Buyer:" />
+      <Label layoutX="14.0" layoutY="124.0" text="Add Category:" />
+      <Label layoutX="48.0" layoutY="217.0" text="Add Tag:" />
+      <ListView id="addedList" layoutY="322.0" prefHeight="278.0" prefWidth="600.0" />
+      <Button id="submitBuyer" fx:id="submitBuyer" layoutX="491.0" layoutY="34.0" mnemonicParsing="false" onAction="#addBuyer" text="Submit" />
+      <Button id="submitCategory" fx:id="submitCategory" layoutX="491.0" layoutY="119.0" mnemonicParsing="false" onAction="#addCategory" text="Submit" />
+      <Button id="submitTag" layoutX="491.0" layoutY="212.0" mnemonicParsing="false" text="Submit" />
+      <TextField id="buyerText" fx:id="buyerText" layoutX="128.0" layoutY="34.0" prefHeight="27.0" prefWidth="321.0" />
+      <TextField id="tagText" layoutX="282.0" layoutY="212.0" />
+      <TextField id="categoryText" fx:id="categoryText" layoutX="128.0" layoutY="119.0" prefHeight="27.0" prefWidth="321.0" />
+      <Button id="nextButton" layoutX="492.0" layoutY="273.0" mnemonicParsing="false" onAction="#setupDone" onMouseClicked="#setupDone" onMousePressed="#setupDone" prefHeight="27.0" prefWidth="61.0" text="Next" />
+      <MenuButton id="tagMenu" fx:id="tagMenu" layoutX="128.0" layoutY="212.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
+   </children>
+</Pane>

@@ -2,11 +2,11 @@ package ftta;
 
 public class Buyer{
 	
-	private long buyerID;
+	private static long buyerID = 0;
 	private String initials;
 
-	public Buyer(long id, String initialsIn){
-		this.buyerID = id;
+	public Buyer(String initialsIn){
+		this.buyerID = buyerID++;
 		this.initials = initialsIn;
 	}
 
