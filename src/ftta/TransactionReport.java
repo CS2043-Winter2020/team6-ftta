@@ -19,8 +19,16 @@ public class TransactionReport {
 	
 	public void calculateCategoryListTotals() {
 		for(int i = 0; i<cList.size(); i++) {
-			calculateCategoryTotal(cList.getCategoryByIndex(i));
+			calculateCategoryTotal(cList.getCategory(i));
 		}
+	}
+
+	public double getTotalPointsFromAllCategories() {
+		double totalPoints = 0;
+		for (int i = 0; i < cList.size(); i++) {
+			totalPoints += cList.getCategory(i).getPointsTotal();
+		}
+		return totalPoints;
 	}
 	
 	private void calculateCategoryTotal(Category catIn) {

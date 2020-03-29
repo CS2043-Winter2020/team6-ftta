@@ -27,6 +27,12 @@ public class Driver {
 		Category c4 = new Category("Household");
 		Category c5 = new Category("Pharmacy");
 
+		c1.setPointSchema(0.05);
+		c2.setPointSchema(0.2);
+		c3.setPointSchema(0.004);
+		c4.setPointSchema(0.1);
+		c5.setPointSchema(0.05);
+
 		c1.addTag("food");
 		c1.addTag("pets");
 		c1.addTag("sobeys");
@@ -74,6 +80,9 @@ public class Driver {
 		ptList.addProccessedTransaction(pt4);
 		
 		tReport.calculateCategoryListTotals();
+
+		double PointsTotal = tReport.getTotalPointsFromAllCategories();
+		
 		System.out.println("Done");
 		
 	}
