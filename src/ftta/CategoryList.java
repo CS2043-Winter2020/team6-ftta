@@ -22,7 +22,7 @@ public class CategoryList {
 			categories.remove(index);
 	}
 	
-	public Category getCategoryByName(String name) {
+	public Category getCategory(String name) {
 		Category cat = new Category("");
 		for(int i=0; i<categories.size(); i++) {
 			if(categories.get(i).getName().equals(name)) {
@@ -32,7 +32,7 @@ public class CategoryList {
 		return cat;
 	}
 	
-	public Category getCategoryByIndex(int index) {
+	public Category getCategory(int index) {
 		return categories.get(index);
 	}
 	

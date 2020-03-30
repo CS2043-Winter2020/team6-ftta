@@ -6,11 +6,14 @@ public class Category {
 	private String name;
 	private ArrayList<String> tags;
 	private double transactionTotal;
+	private double pointSchema;
+	private double pointsTotal;
 	
 	public Category(String nameIn) {
 		name = nameIn;
 		tags = new ArrayList<String>();
 		transactionTotal = 0;
+		pointsTotal = 0;
 	}
 	
 	public void addTag(String tagIn) {
@@ -37,5 +40,27 @@ public class Category {
 	
 	public void addToTransactionTotal(double transactionPrice) {
 		transactionTotal += transactionPrice;
+		if(transactionPrice > 0)
+			addToPointsTotal(transactionPrice);
+	}
+
+	public void setPointSchema(double pointSchema){
+		this.pointSchema = pointSchema;
+	}
+
+	public double getPointsTotal(){
+		return pointsTotal;
+	}
+
+	public void addToPointsTotal(double transactionPrice){
+		pointsTotal += transactionPrice*pointSchema; 
+	}
+
+	public void removePointsFromTotal(double pointsToRemove){
+		if(pointsToRemove>=pointsTotal){
+			pointsTotal = 0;
+		}else{
+			pointsTotal -= pointsToRemove;
+		}
 	}
 }
