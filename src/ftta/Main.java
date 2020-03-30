@@ -27,50 +27,60 @@ public class Main extends Application implements Initializable {
 	private BuyerList bList = new BuyerList();
 	private TransactionReport ptList = new TransactionReport();
 	private TransactionScanner tScanner = new TransactionScanner(tList);
-
-	Stage stage = new Stage();
+	
+	private Stage stage;
 	private int stageID = 1;
 
 	public void start() throws Exception {
 		Scene scene = null;
 		
-		if (stageID == 1) {
-			Parent root = FXMLLoader.load(getClass().getResource("DragDrop.fxml"));
-			scene = new Scene(root, 570, 492);
-		}else if (stageID ==2) {
-			Parent root = FXMLLoader.load(getClass().getResource("Setup.fxml"));
-			scene = new Scene(root, 600, 600);
-		}else if (stageID == 3) {
-			Parent root = FXMLLoader.load(getClass().getResource("tSort.fxml"));
-			scene = new Scene(root, 499, 401);
-		}else if (stageID == 4) {
-			Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
-			scene = new Scene(root, 600, 600);
-		}
-
+		Parent root = FXMLLoader.load(getClass().getResource("DragDrop.fxml"));
+		scene = new Scene(root, 570, 492);
+		
+		this.stage = new Stage();
 		stage.setTitle("Financial Tracker");
 		stage.setScene(scene);
 		stage.show();
+		
 	}
-
-	public void stageTwo() throws Exception {
-		Parent root2 = FXMLLoader.load(getClass().getResource("Setup.fxml"));
-
-		Scene sceneTwo = new Scene(root2, 600, 600);
-
-		stage.setScene(sceneTwo);
-		stage.show();
+	
+	public void changeScene() throws IOException{
+		if (stageID == 1) {
+			Parent root = FXMLLoader.load(getClass().getResource("DragDrop.fxml"));		
+			stage.getScene().setRoot(root);
+		}else if (stageID ==2) {
+			Parent root = FXMLLoader.load(getClass().getResource("Setup.fxml"));
+			stage.getScene().setRoot(root);
+		}else if (stageID == 3) {
+			Parent root = FXMLLoader.load(getClass().getResource("tSort.fxml"));
+			stage.getScene().setRoot(root);
+			transactionSort();
+		}else if (stageID == 4) {
+			Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+			stage.getScene().setRoot(root);
+		}
 	}
 
 	public static void main(String args[]) {
 		launch(args);
 	}
+	
+	//**********************
+	//****** Controls ******
+	//**********************
 
-	// Controls
-
-	@FXML
-	private Rectangle rectangle;
-
+	@FXML private Rectangle rectangle;
+	@FXML private TextField categoryText;
+	@FXML private TextField buyerText;
+	@FXML private ListView<String> addedList;
+	@FXML private Button submitCategory;
+	@FXML private ChoiceBox tagMenu;
+	@FXML private Label reportLabel;
+	@FXML private TextField tagName;
+	
+	//defaults
+	
+	//stage one
 	@FXML
 	private void handleDragOver(DragEvent event) {
 		if (event.getDragboard().hasFiles()) {
@@ -92,7 +102,7 @@ public class Main extends Application implements Initializable {
 				}
 				try {
 					stageID = 2;
-					start();
+					changeScene();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -105,24 +115,19 @@ public class Main extends Application implements Initializable {
 		event.consume();
 	}
 	
+	//Stage Two
 	@FXML
-	public void setupDone() throws Exception {
+	private void nextButton() throws Exception  {
 		stageID = 3;
 		start(stage);
 	}
-	
-	@FXML private TextField categoryText;
-	@FXML private TextField buyerText;
-	@FXML private ListView addedList;
-	@FXML private Button submitCategory;
-	@FXML private MenuButton tagMenu;
-	
 	@FXML
 	public void addCategory() throws Exception {
 		if (submitCategory.onMouseClickedProperty() != null) {
 			Category category = new Category(categoryText.getText());
 			cList.addCategory(category);			
-			//addedList.getItems().add(categoryText.getText() + "was added");
+			reportLabel.setText("Category " + category.getName() + " has been added.");
+			tagMenu.getItems().add(category.getName());
 		}
 	}
 	
@@ -131,19 +136,58 @@ public class Main extends Application implements Initializable {
 		if (submitCategory.onMouseClickedProperty() != null) {
 			Buyer buyer = new Buyer(buyerText.getText());
 			bList.addBuyerToList(buyer);
+			reportLabel.setText("Buyer " + buyer.getInitials() + " has been added.");
 			//addedList.getItems().add(categoryText.getText() + "was added");
 		}
 	}
+	
+	@FXML
+	public void addTag() throws Exception {
+		if (submitCategory.onMouseClickedProperty() != null) {
+			cList.getCategory(tagMenu.getValue().toString()).addTag(tagName.getText());
+			reportLabel.setText("Tag " + tagName.getText() + " has been added to " + tagMenu.getValue());
+		}
+	}
+	
+	//stage three
+	
+	@FXML private ChoiceBox buyerList;
+	@FXML private ChoiceBox tagList;
+	@FXML private Label transactionLbl;
+	
+	@FXML
+	public void updateButton() throws Exception{
+		loadBuyers();
+		loadTags();
+	}
+	
+	@FXML
+	public void loadBuyers() throws Exception{
+		for (int i = 0; i < 1; i++) {
+			buyerList.getItems().add(bList.getBuyerInitials(i));
+		}
+	}
+	
+	@FXML
+	public void loadTags() throws Exception{
+		for (int i = 0; i < 1; i++) {
+			tagList.getItems().add(cList.getCategory(0));
+		}
+	}
+	
+	@FXML
+	public void transactionSort() {
+		transactionLbl.setText(tList.getTransactions().get(0).toString());
+	}
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-
+		//Not to fill but breaks without !?
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-//		stage = primaryStage;
 		start();
 	}
 

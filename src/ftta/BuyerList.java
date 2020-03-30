@@ -18,4 +18,12 @@ public class BuyerList {
     		buyers.add(buyer);
         }
     }
+    
+    public int getBuyerListLength() {
+    	return buyers.size();
+    }
+    
+    public String getBuyerInitials(int index) {
+    	return buyers.get(index).getInitials();
+    }
 }

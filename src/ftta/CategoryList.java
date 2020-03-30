@@ -31,4 +31,12 @@ public class CategoryList {
 		}
 		return cat;
 	}
+	
+	public Category getCategory(int index) {
+		return categories.get(index);
+	}
+	
+	public int getCategoryListSize() {
+		return categories.size();
+	}
 }
