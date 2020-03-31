@@ -26,7 +26,7 @@ public class FileWriter {
 		pTransactions = this.plist.getList();
 	}
 
-	public void writeToFile() {
+	public void writeToFile(String directory) {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Transaction Record");
         
@@ -81,7 +81,7 @@ public class FileWriter {
             tag.setCellValue((String) pTransaction.getTag());
              
         }        
-        try (FileOutputStream outputStream = new FileOutputStream("TestFiles/TransactionReport.xlsx")) {
+        try (FileOutputStream outputStream = new FileOutputStream("Export/TransactionReport.xlsx")) {
             workbook.write(outputStream);
         }
         catch (FileNotFoundException e) {

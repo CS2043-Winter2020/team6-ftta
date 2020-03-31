@@ -1,3 +1,4 @@
+  
 package ftta;
 
 import java.util.Date;
@@ -16,8 +17,8 @@ public class TransactionScanner {
 		tList = tListIn;
 	}
 	
-	public TransactionList ScanExcelSheet(TransactionList tList) throws IOException {
-		FileInputStream fis = new FileInputStream(new File("TestFiles/SampleBankRecord.xls"));
+	public TransactionList ScanExcelSheet(TransactionList tList, File fileIn) throws IOException {
+		FileInputStream fis = new FileInputStream(fileIn);
 		HSSFWorkbook wb = new HSSFWorkbook(fis);
 		HSSFSheet sheet = wb.getSheetAt(0);
 				

@@ -38,6 +38,14 @@ public class Category {
 		return tags;
 	}
 	
+	public String getTag(int index) {
+		return tags.get(index);
+	}
+	
+	public int getTagListSize() {
+		return tags.size();
+	}
+	
 	public void addToTransactionTotal(double transactionPrice) {
 		transactionTotal += transactionPrice;
 		if(transactionPrice > 0)

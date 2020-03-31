@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="570.0" style="-fx-background-color: #eae8e8eae8e8;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ftta.Main">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="465.0" layoutX="14.0" layoutY="14.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" stroke="BLACK" strokeType="INSIDE" width="540.0" />
+      <Label layoutX="179.0" layoutY="238.0" text="Drag excel file here to get started." />
+   </children>
+</Pane>
