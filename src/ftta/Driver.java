@@ -1,3 +1,4 @@
+  
 package ftta;
 
 import java.io.IOException;
@@ -11,11 +12,10 @@ public class Driver {
 		
 		TransactionReport tReport = new TransactionReport(cList,bList,ptList);
 		
-		TransactionReport ptList = new TransactionReport();
 		System.out.println("Processing Bank Record");
 		TransactionScanner tScanner = new TransactionScanner(tList);
 		try {
-			tList = tScanner.ScanExcelSheet(tList, "/Users/owenpiercey/git/team6-ftta/TestFiles/SampleBankRecord.xls");
+			tList = tScanner.ScanExcelSheet(tList);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -71,17 +71,14 @@ public class Driver {
 		bList.addBuyerToList(buyer4);
 		
 		ProcessedTransaction pt1 = new ProcessedTransaction(tList.getTransactions().get(0), buyer3.getInitials(), "Prescriptions");
-		ProcessedTransaction pt2 = new ProcessedTransaction(tList.getTransactions().get(2), buyer2.getInitials(), "sobeys");
-		ProcessedTransaction pt3 = new ProcessedTransaction(tList.getTransactions().get(3), buyer1.getInitials(), "food");
-		ProcessedTransaction pt4 = new ProcessedTransaction(tList.getTransactions().get(4), buyer4.getInitials(), "Gas");
+		ProcessedTransaction pt2 = new ProcessedTransaction(tList.getTransactions().get(2), buyer3.getInitials(), "sobeys");
+		ProcessedTransaction pt3 = new ProcessedTransaction(tList.getTransactions().get(3), buyer3.getInitials(), "food");
+		ProcessedTransaction pt4 = new ProcessedTransaction(tList.getTransactions().get(4), buyer3.getInitials(), "Gas");
 
 		ptList.addProccessedTransaction(pt1);
 		ptList.addProccessedTransaction(pt2);
 		ptList.addProccessedTransaction(pt3);
 		ptList.addProccessedTransaction(pt4);
-		
-		FileWriter f1 = new FileWriter(ptList);
-		f1.writeToFile();
 		
 		tReport.calculateCategoryListTotals();
 

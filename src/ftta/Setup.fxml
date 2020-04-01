@@ -17,7 +17,7 @@
       <TextField id="buyerText" fx:id="buyerText" layoutX="127.0" layoutY="67.0" prefHeight="27.0" prefWidth="321.0" />
       <TextField id="tagText" fx:id="tagName" layoutX="281.0" layoutY="245.0" />
       <TextField id="categoryText" fx:id="categoryText" layoutX="127.0" layoutY="152.0" prefHeight="27.0" prefWidth="321.0" />
-      <Button id="nextButton" fx:id="nextButton" layoutX="490.0" layoutY="329.0" mnemonicParsing="false" onAction="#nextButton" prefHeight="27.0" prefWidth="61.0" text="Next" />
+      <Button id="nextButton" fx:id="nextButton" layoutX="490.0" layoutY="529.0" mnemonicParsing="false" onAction="#nextButton" prefHeight="27.0" prefWidth="61.0" text="Next" />
       <Label id="reportLabel" fx:id="reportLabel" layoutX="53.0" layoutY="334.0" text="Label" />
       <ChoiceBox fx:id="tagMenu" layoutX="127.0" layoutY="245.0" prefHeight="27.0" prefWidth="131.0" />
    </children>

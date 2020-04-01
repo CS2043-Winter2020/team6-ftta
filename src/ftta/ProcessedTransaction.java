@@ -31,4 +31,11 @@ public class ProcessedTransaction {
 		return transaction;
 	}
 	
+	public CategoryList setPoints(CategoryList cList) {
+		for (int i = 0; i < cList.size(); i++) {
+			cList.getCategory(i).addToPointsTotal(transaction.getCredit());
+		}
+
+		return cList;
+	}
 }

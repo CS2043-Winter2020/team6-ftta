@@ -117,6 +117,7 @@ public class Main extends Application implements Initializable {
 	public void addCategory() throws Exception {
 		if (submitCategory.onMouseClickedProperty() != null) {
 			Category category = new Category(categoryText.getText());
+			category.setPointSchema(0.05);
 			ptList.getClist().addCategory(category);
 			reportLabel.setText("Category " + category.getName() + " has been added.");
 			tagMenu.getItems().add(category.getName());
@@ -205,6 +206,7 @@ public class Main extends Application implements Initializable {
 		if (transactionIndex < ptList.getTlist().size()) {
 			ProcessedTransaction newProcessed = new ProcessedTransaction(ptList.getTlist().getTransaction(transactionIndex), buyerList.getValue().toString(), tagList.getValue().toString());
 			ptList.addProcessedTransaction(newProcessed);
+			
 			transactionIndex++;
 			listTransaction(transactionIndex);
 			transactionCounter(transactionIndex);
@@ -214,8 +216,10 @@ public class Main extends Application implements Initializable {
 	
 	@FXML
 	public void exportPTransactions() {
+		ptList.calculateCategoryListTotals();
+
 		FileWriter fw = new FileWriter(ptList.getPTList());
-		fw.writeToFile("n");
+		fw.writeToFile("Export/", "PTL.xlsx");
 	}
 	
 	@Override
