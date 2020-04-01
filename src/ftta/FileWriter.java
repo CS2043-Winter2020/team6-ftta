@@ -81,7 +81,7 @@ public class FileWriter {
             tag.setCellValue((String) pTransaction.getTag());
              
         }        
-        try (FileOutputStream outputStream = new FileOutputStream("Export/TransactionReport.xlsx")) {
+        try (FileOutputStream outputStream = new FileOutputStream("Export/TransactionReport.xls")) {
             workbook.write(outputStream);
         }
         catch (FileNotFoundException e) {

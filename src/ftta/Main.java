@@ -212,6 +212,12 @@ public class Main extends Application implements Initializable {
 		
 	}
 	
+	@FXML
+	public void exportPTransactions() {
+		FileWriter fw = new FileWriter(ptList.getPTList());
+		fw.writeToFile("n");
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
