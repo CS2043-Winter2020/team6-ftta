@@ -28,7 +28,7 @@ public class Main extends Application implements Initializable {
 	public void start(TransactionReport ptListIn) throws Exception {
 		ptList = ptListIn;
 		Scene scene = null;
-		
+
 		if (stageID == 1) {
 			Parent root = FXMLLoader.load(getClass().getResource("DragDrop.fxml"));
 			scene = new Scene(root, 570, 492);
@@ -42,7 +42,7 @@ public class Main extends Application implements Initializable {
 			Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
 			scene = new Scene(root, 570, 492);
 		}
-		
+
 		this.stage = new Stage();
 		stage.setTitle("Financial Tracker");
 		stage.setScene(scene);
@@ -62,19 +62,7 @@ public class Main extends Application implements Initializable {
 	@FXML
 	private Rectangle rectangle;
 	@FXML
-	private TextField categoryText;
-	@FXML
-	private TextField buyerText;
-	@FXML
-	private ListView<String> addedList;
-	@FXML
-	private Button submitCategory;
-	@FXML
-	private ChoiceBox tagMenu;
-	@FXML
 	private Label reportLabel;
-	@FXML
-	private TextField tagName;
 
 	// defaults
 
@@ -108,6 +96,19 @@ public class Main extends Application implements Initializable {
 
 	// Stage Two
 	@FXML
+	private TextField categoryPointText;
+	@FXML
+	private Button submitCategory;
+	@FXML
+	private ChoiceBox tagMenu;
+	@FXML
+	private TextField tagName;
+	@FXML
+	private TextField categoryText;
+	@FXML
+	private TextField buyerText;
+
+	@FXML
 	private void nextButton() throws Exception {
 		stageID = 3;
 		start(ptList);
@@ -117,7 +118,7 @@ public class Main extends Application implements Initializable {
 	public void addCategory() throws Exception {
 		if (submitCategory.onMouseClickedProperty() != null) {
 			Category category = new Category(categoryText.getText());
-			category.setPointSchema(0.05);
+			category.setPointSchema(Double.parseDouble(categoryPointText.getText()));
 			ptList.getClist().addCategory(category);
 			reportLabel.setText("Category " + category.getName() + " has been added.");
 			tagMenu.getItems().add(category.getName());
@@ -140,7 +141,7 @@ public class Main extends Application implements Initializable {
 			reportLabel.setText("Tag " + tagName.getText() + " has been added to " + tagMenu.getValue());
 		}
 	}
-	
+
 	@FXML
 	public void back() throws Exception {
 		stageID = 2;
@@ -163,9 +164,12 @@ public class Main extends Application implements Initializable {
 	private Button submitPT;
 	@FXML
 	private Button exportButton;
-		
-	private int transactionIndex = 0;
+	@FXML
+	private TextField directoryText;
+	@FXML
+	private TextField fileNameText;
 
+	private int transactionIndex = 0;
 
 	@FXML
 	public void updateStageThree() throws Exception {
@@ -177,16 +181,40 @@ public class Main extends Application implements Initializable {
 
 	@FXML
 	public void loadBuyers() throws Exception {
-		for (int i = 0; i < ptList.getBlist().size(); i++) {
-			buyerList.getItems().add(ptList.getBlist().getBuyerInitials(i));
+		if (buyerList.getItems().size() <= 0) {
+			for (int i = 0; i < ptList.getBlist().size(); i++) {
+				buyerList.getItems().add(ptList.getBlist().getBuyerInitials(i));
+			}
+		} else {
+			for (int i = 0; i < ptList.getBlist().size(); i++) {
+
+				for (int j = 0; j < buyerList.getItems().size(); j++) {
+					if (buyerList.getItems().get(j).toString().compareTo(ptList.getBlist().getBuyerInitials(i)) != 0) {
+						buyerList.getItems().add(ptList.getBlist().getBuyerInitials(i));
+					}
+				}
+			}
 		}
 	}
 
 	@FXML
 	public void loadTags() throws Exception {
-		for (int i = 0; i < ptList.getClist().size(); i++) {
-			for (int j = 0; j < ptList.getClist().getCategory(i).getTagListSize(); j++) {
-				tagList.getItems().add(ptList.getClist().getCategory(i).getTag(j));
+		if (tagList.getItems().size() == 0) {
+			for (int i = 0; i < ptList.getClist().size(); i++) {
+				for (int j = 0; j < ptList.getClist().getCategory(i).getTagListSize(); j++) {
+					tagList.getItems().add(ptList.getClist().getCategory(i).getTag(j));
+				}
+			}
+		} else {
+			for (int i = 0; i < ptList.getClist().size(); i++) {
+				for (int j = 0; j < ptList.getClist().getCategory(i).getTagListSize(); j++) {
+					for (int k = 0; k < tagList.getItems().size(); k++) {
+						if (tagList.getItems().get(k).toString()
+								.compareTo(ptList.getClist().getCategory(i).getTag(j)) != 0) {
+							tagList.getItems().add(ptList.getClist().getCategory(i).getTag(j));
+						}
+					}
+				}
 			}
 		}
 	}
@@ -195,33 +223,36 @@ public class Main extends Application implements Initializable {
 	public void listTransaction(int index) {
 		transactionLbl.setText(ptList.getTlist().getTransaction(index).toString());
 	}
-	
+
 	@FXML
 	public void transactionCounter(int index) {
-		trCounter.setText(Integer.toString(index+1) + "/"+ ptList.getTlist().size());
+		trCounter.setText(Integer.toString(index + 1) + "/" + ptList.getTlist().size());
 	}
-	
-	@FXML 
+
+	@FXML
 	public void submitTransaction() {
 		if (transactionIndex < ptList.getTlist().size()) {
-			ProcessedTransaction newProcessed = new ProcessedTransaction(ptList.getTlist().getTransaction(transactionIndex), buyerList.getValue().toString(), tagList.getValue().toString());
+			ProcessedTransaction newProcessed = new ProcessedTransaction(
+					ptList.getTlist().getTransaction(transactionIndex), buyerList.getValue().toString(),
+					tagList.getValue().toString());
 			ptList.addProcessedTransaction(newProcessed);
-			
 			transactionIndex++;
 			listTransaction(transactionIndex);
 			transactionCounter(transactionIndex);
+		} else {
+			transactionLbl.setText("Complete! Move on to Export.");
 		}
-		
+
 	}
-	
+
 	@FXML
 	public void exportPTransactions() {
 		ptList.calculateCategoryListTotals();
 
 		FileWriter fw = new FileWriter(ptList.getPTList());
-		fw.writeToFile("Export/", "PTL.xlsx");
+		fw.writeToFile(directoryText.getText(), fileNameText.getText());
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
@@ -229,7 +260,7 @@ public class Main extends Application implements Initializable {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		TransactionReport trReport = new TransactionReport();
-		//ptList = trReport;
+		// ptList = trReport;
 		start(ptList);
 	}
 
