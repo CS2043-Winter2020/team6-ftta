@@ -3,18 +3,41 @@ package ftta;
 import java.util.ArrayList;
 
 public class TransactionReport {
-	private CategoryList cList;
-	private BuyerList bList;
-	private ProcessedTransactionList ptList;
+	private CategoryList cList = new CategoryList();
+	private BuyerList bList = new BuyerList();
+	private TransactionList tList = new TransactionList();
+	private ProcessedTransactionList ptList = new ProcessedTransactionList();
 	
-	public TransactionReport(CategoryList cListIn, BuyerList bListIn, ProcessedTransactionList ptListIn) {
-		cList = cListIn;
-		bList = bListIn;
-		ptList = ptListIn;
+//	public void addCategory(Category categoryIn) {
+//		cList.addCategory(categoryIn);
+//	}
+//	
+//	public void addBuyer(Category categoryIn) {
+//		cList.addCategory(categoryIn);
+//	}
+	
+	public void setTlist(TransactionList tListIn) {
+		tList = tListIn;
 	}
 	
-	public void setCategoryList(CategoryList cListIn) {
-		cList = cListIn;
+	public CategoryList getClist() {
+		return cList;
+	}
+	
+	public BuyerList getBlist() {
+		return bList;
+	}
+	
+	public TransactionList getTlist() {
+		return tList;
+	}
+	
+	public ProcessedTransactionList getPTList() {
+		return ptList;
+	}
+	
+	public void addProcessedTransaction(ProcessedTransaction ptIn) {
+		ptList.addProccessedTransaction(ptIn);
 	}
 	
 	public void calculateCategoryListTotals() {

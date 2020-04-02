@@ -12,4 +12,12 @@ public class TransactionList {
     public ArrayList<Transaction> getTransactions(){
     	return transactions;
     }
+    
+    public Transaction getTransaction(int index) {
+    	return transactions.get(index);
+    }
+    
+    public int size() {
+    	return transactions.size();
+    }
 }

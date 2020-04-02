@@ -54,4 +54,12 @@ public class Transaction {
     public double getCredit() {
         return credit;
     }
+    
+    public String toString() {
+    	if (debit > 0) {
+        	return date + " " + description + " " + debit;
+    	}else {
+        	return date + " " + description + " " + credit;
+    	}
+    }
 }

@@ -2,20 +2,10 @@ package ftta;
 
 public class Buyer{
 	
-	private long buyerID;
 	private String initials;
 
-	public Buyer(long id, String initialsIn){
-		this.buyerID = id;
+	public Buyer(String initialsIn){
 		this.initials = initialsIn;
-	}
-
-	public long getID(){
-		return buyerID;
-	}
-    
-	public void setID(long id){
-		buyerID = id;
 	}
 
 	public void setInitials(String initialsIn){
