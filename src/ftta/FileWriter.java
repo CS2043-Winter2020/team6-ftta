@@ -29,6 +29,7 @@ public class FileWriter {
 		pTransactions = this.plist.getList();
 		clist = trep.getClist();
 		blist = trep.getBlist();
+	}
 	
 	public FileWriter(ProcessedTransactionList plist) {
 		this.plist = plist;
