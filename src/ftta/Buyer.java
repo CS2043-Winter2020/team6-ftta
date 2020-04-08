@@ -8,7 +8,7 @@ public class Buyer{
 	public Buyer(String initialsIn){
 		this.initials = initialsIn;
 		transactionTotal = 0;
-	}
+  }
 
 	public void setInitials(String initialsIn){
 		initials = initialsIn;
@@ -17,6 +17,7 @@ public class Buyer{
 	public String getInitials() {
 		return initials;
 	}
+
 	
 	public void addToTransactionTotal(double amount) {
 		transactionTotal += amount;
@@ -25,4 +26,5 @@ public class Buyer{
 	public double getTransactionTotal() {
 		return transactionTotal;
 	}
+
 }

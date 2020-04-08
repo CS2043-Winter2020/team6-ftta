@@ -251,6 +251,7 @@ public class Main extends Application implements Initializable {
 		ptList.calculateBuyerListTotals();
 
 		FileWriter fw = new FileWriter(ptList);
+
 		fw.writeToFile(directoryText.getText(), fileNameText.getText());
 	}
 

@@ -20,6 +20,7 @@ public class FileWriter {
 	
 	private ProcessedTransactionList plist;
 	private ArrayList<ProcessedTransaction> pTransactions;
+ 
 	private CategoryList clist;
 	private BuyerList blist;
 	
@@ -28,6 +29,10 @@ public class FileWriter {
 		pTransactions = this.plist.getList();
 		clist = trep.getClist();
 		blist = trep.getBlist();
+	
+	public FileWriter(ProcessedTransactionList plist) {
+		this.plist = plist;
+		pTransactions = this.plist.getList();
 	}
 
 	public void writeToFile(String directory, String fileName) {
@@ -40,6 +45,7 @@ public class FileWriter {
         rowCount++;
      
         String[] titles = {"Date", "Description", "Debit", "Credit", "Buyer", "Tag"};
+
         for(String title : titles)
         {
         	Cell cell = titleRow.createCell(titleColumns);
@@ -85,8 +91,10 @@ public class FileWriter {
             tag.setCellValue((String) pTransaction.getTag());
              
         }
+    
         writeCategoryTotals(workbook);
         writeBuyerTotals(workbook);
+
         try (FileOutputStream outputStream = new FileOutputStream(directory + "/"+fileName)) {
             workbook.write(outputStream);
         }
