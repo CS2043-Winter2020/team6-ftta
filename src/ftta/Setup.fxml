@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ftta.Main">
+   <children>
+      <Label layoutX="35.0" layoutY="72.0" text="Add Buyer:" />
+      <Label layoutX="13.0" layoutY="157.0" text="Add Category:" />
+      <Label layoutX="47.0" layoutY="250.0" text="Add Tag:" />
+      <Button id="submitBuyer" fx:id="submitBuyer" layoutX="490.0" layoutY="67.0" mnemonicParsing="false" onAction="#addBuyer" text="Submit" />
+      <Button id="submitCategory" fx:id="submitCategory" layoutX="490.0" layoutY="152.0" mnemonicParsing="false" onAction="#addCategory" text="Submit" />
+      <Button id="submitTag" fx:id="addTag" layoutX="490.0" layoutY="245.0" mnemonicParsing="false" onAction="#addTag" text="Submit" />
+      <TextField id="buyerText" fx:id="buyerText" layoutX="127.0" layoutY="67.0" prefHeight="27.0" prefWidth="321.0" text="Initials" />
+      <TextField id="tagText" fx:id="tagName" layoutX="281.0" layoutY="245.0" text="Tag" />
+      <TextField id="categoryText" fx:id="categoryText" layoutX="127.0" layoutY="152.0" prefHeight="27.0" prefWidth="321.0" text="Cateory" />
+      <Button id="nextButton" fx:id="nextButton" layoutX="490.0" layoutY="329.0" mnemonicParsing="false" onAction="#nextButton" prefHeight="27.0" prefWidth="61.0" text="Next" />
+      <Label id="reportLabel" fx:id="reportLabel" layoutX="53.0" layoutY="334.0" text="Nothing has beed added." textFill="#c30000" />
+      <ChoiceBox fx:id="tagMenu" layoutX="127.0" layoutY="245.0" prefHeight="27.0" prefWidth="131.0" />
+      <TextField fx:id="categoryPointText" layoutX="281.0" layoutY="186.0" text="0.05" />
+      <Label layoutX="175.0" layoutY="191.0" text="Category Points" />
+   </children>
+</Pane>

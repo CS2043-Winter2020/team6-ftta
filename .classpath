@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="build/Jars/poi-ooxml-3.17.jar"/>
 	<classpathentry kind="lib" path="build/Jars/poi-ooxml-schemas-3.17.jar"/>
 	<classpathentry kind="lib" path="build/Jars/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

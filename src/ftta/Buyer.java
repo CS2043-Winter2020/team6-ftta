@@ -2,21 +2,13 @@ package ftta;
 
 public class Buyer{
 	
-	private long buyerID;
 	private String initials;
+	private double transactionTotal;
 
-	public Buyer(long id, String initialsIn){
-		this.buyerID = id;
+	public Buyer(String initialsIn){
 		this.initials = initialsIn;
-	}
-
-	public long getID(){
-		return buyerID;
-	}
-    
-	public void setID(long id){
-		buyerID = id;
-	}
+		transactionTotal = 0;
+  }
 
 	public void setInitials(String initialsIn){
 		initials = initialsIn;
@@ -25,4 +17,14 @@ public class Buyer{
 	public String getInitials() {
 		return initials;
 	}
+
+	
+	public void addToTransactionTotal(double amount) {
+		transactionTotal += amount;
+	}
+	
+	public double getTransactionTotal() {
+		return transactionTotal;
+	}
+
 }
