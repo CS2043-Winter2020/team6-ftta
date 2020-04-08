@@ -248,8 +248,10 @@ public class Main extends Application implements Initializable {
 	@FXML
 	public void exportPTransactions() {
 		ptList.calculateCategoryListTotals();
+		ptList.calculateBuyerListTotals();
 
-		FileWriter fw = new FileWriter(ptList.getPTList());
+		FileWriter fw = new FileWriter(ptList);
+
 		fw.writeToFile(directoryText.getText(), fileNameText.getText());
 	}
 

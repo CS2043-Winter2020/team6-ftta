@@ -33,6 +33,10 @@ public class BuyerList {
     	return null;
     }
     
+    public Buyer getBuyer(int index) {
+    	return buyers.get(index);
+    }
+    
     public String getBuyerInitials(int index) {
     	return buyers.get(index).getInitials();
     }

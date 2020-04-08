@@ -61,4 +61,23 @@ public class TransactionReport {
 			}
 		}
 	}
+	
+	public void calculateBuyerListTotals() {
+		for(int i = 0; i<bList.size(); i++) {
+			calculateBuyerTotal(bList.getBuyer(i));
+		}
+	}
+	
+	private void calculateBuyerTotal(Buyer buyerIn) {
+		for(int i=0; i<ptList.size(); i++) {
+			if(ptList.get(i).getBuyer().equalsIgnoreCase(buyerIn.getInitials())) {
+				Transaction t = ptList.get(i).getTransaction();
+				if(t.getCredit()==0)
+					buyerIn.addToTransactionTotal(t.getDebit());
+				else
+					buyerIn.addToTransactionTotal(-t.getCredit());
+			}
+		}
+	}
+
 }

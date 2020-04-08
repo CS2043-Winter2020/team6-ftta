@@ -20,6 +20,15 @@ public class FileWriter {
 	
 	private ProcessedTransactionList plist;
 	private ArrayList<ProcessedTransaction> pTransactions;
+ 
+	private CategoryList clist;
+	private BuyerList blist;
+	
+	public FileWriter(TransactionReport trep) {
+		plist = trep.getPTList();
+		pTransactions = this.plist.getList();
+		clist = trep.getClist();
+		blist = trep.getBlist();
 	
 	public FileWriter(ProcessedTransactionList plist) {
 		this.plist = plist;
@@ -35,7 +44,8 @@ public class FileWriter {
         Row titleRow = sheet.createRow(rowCount);
         rowCount++;
      
-        String[] titles = {"Date", "Description", "Credit", "Debit", "Buyer", "Tag"};
+        String[] titles = {"Date", "Description", "Debit", "Credit", "Buyer", "Tag"};
+
         for(String title : titles)
         {
         	Cell cell = titleRow.createCell(titleColumns);
@@ -80,7 +90,11 @@ public class FileWriter {
             columnCount++;
             tag.setCellValue((String) pTransaction.getTag());
              
-        }        
+        }
+    
+        writeCategoryTotals(workbook);
+        writeBuyerTotals(workbook);
+
         try (FileOutputStream outputStream = new FileOutputStream(directory + "/"+fileName)) {
             workbook.write(outputStream);
         }
@@ -90,5 +104,74 @@ public class FileWriter {
             e.printStackTrace();
         }
     }
+	
+	private void writeCategoryTotals(XSSFWorkbook workbook) {
+		XSSFSheet sheet = workbook.createSheet("Category Totals");
+        int titleColumns = 0;
+        Row titleRow = sheet.createRow(0);
+        
+        String[] titles = {"Category", "Transaction Total", "Total Points"};
+        for(String title : titles) {
+        	Cell cell = titleRow.createCell(titleColumns);
+        	titleColumns++;
+            cell.setCellValue((String)title);
+        }
+        double pointsTotal = 0;
+        for(int i=0; i<clist.size(); i++) {
+            Row row = sheet.createRow(i+1);
+            int columnCount = 0;
+            
+            //category name column
+            Cell name = row.createCell(columnCount);
+            columnCount++;
+            name.setCellValue((String) clist.getCategory(i).getName());
+            
+            //transaction total column
+            Cell total = row.createCell(columnCount);
+            columnCount++;
+            total.setCellValue((Double) clist.getCategory(i).getTransactionTotal());
+            
+            //points column
+            Cell points = row.createCell(columnCount);
+            columnCount++;
+            double categoryPoints = clist.getCategory(i).getPointsTotal();
+            points.setCellValue((Double) categoryPoints);
+            pointsTotal += categoryPoints;
+        }
+        Row finalRow = sheet.createRow(clist.size()+1);
+        Cell cell1 = finalRow.createCell(1);
+        cell1.setCellValue((String)"Total Points");
+        Cell cell2 = finalRow.createCell(2);
+        cell2.setCellValue((Double) pointsTotal);
+	}
+	
+	private void writeBuyerTotals(XSSFWorkbook workbook) {
+		XSSFSheet sheet = workbook.createSheet("Buyer Totals");
+        int rowCount = 0;
+        int titleColumns = 0;
+        Row titleRow = sheet.createRow(rowCount);
+        rowCount++;
+        
+        String[] titles = {"Buyer Initials", "Transaction Total"};
+        for(String title : titles) {
+        	Cell cell = titleRow.createCell(titleColumns);
+        	titleColumns++;
+            cell.setCellValue((String)title);   	
+        }
+        for(int i=0; i<blist.size(); i++) {
+            Row row = sheet.createRow(rowCount);
+            rowCount++;
+            int columnCount = 0;
+            
+            //Buyer initials column
+            Cell initials = row.createCell(columnCount);
+            columnCount++;
+            initials.setCellValue((String) blist.getBuyer(i).getInitials());
+            
+            //Transaction total column
+            Cell total = row.createCell(columnCount);
+            total.setCellValue((Double) blist.getBuyer(i).getTransactionTotal());
+        }
+	}
  
 }

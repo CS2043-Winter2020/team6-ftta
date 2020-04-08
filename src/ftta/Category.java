@@ -51,6 +51,10 @@ public class Category {
 		if(transactionPrice > 0)
 			addToPointsTotal(transactionPrice);
 	}
+	
+	public double getTransactionTotal() {
+		return transactionTotal;
+	}
 
 	public void setPointSchema(double pointSchema){
 		this.pointSchema = pointSchema;
