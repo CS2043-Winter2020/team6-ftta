@@ -60,10 +60,10 @@ public class Driver {
 		cList.addCategory(c4);
 		cList.addCategory(c5);
 		
-		Buyer buyer1 = new Buyer(1, "OP");
-		Buyer buyer2 = new Buyer(2, "CW");
-		Buyer buyer3 = new Buyer(3, "JP");
-		Buyer buyer4 = new Buyer(4, "GI");
+		Buyer buyer1 = new Buyer("OP");
+		Buyer buyer2 = new Buyer("CW");
+		Buyer buyer3 = new Buyer("JP");
+		Buyer buyer4 = new Buyer("GI");
 		
 		bList.addBuyerToList(buyer1);
 		bList.addBuyerToList(buyer2);
